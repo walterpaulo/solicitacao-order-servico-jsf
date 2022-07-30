@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Sistema de Atendimento</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	<h1>Controle de Solicitação</h1>
+		<p:growl />
+			<p:dataTable value="#{retornoSolicitacaoControllerWalterPaulo.lista}"
+			 var="retornoSolicitacao"
+			  paginator="true" rows="5"
+                paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                rowsPerPageTemplate="5,10,15" id="labTable"
+			emptyMessage="Nenhum solicitacao cadastrado!">
+			<p:column headerText="ID RETORNO">
+				<h:outputText value="#{retornoSolicitacao.id}" />
+			</p:column>
+			<p:column headerText="ID SOLICITAÇÃO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.id}" />
+			</p:column>
+			<p:column headerText="DATA SOLICITAÇÃO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.dataSolicitacao}" >
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/SaoPaulo"/>
+				</h:outputText>
+			</p:column>
+			<p:column headerText="ALUNO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.aluno.nome}" />
+			</p:column>
+			<p:column headerText="MATRICULA">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.aluno.matricula}" />
+			</p:column>
+			<p:column headerText="LABORATÓRIO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.laboratorio.numero}" />
+			</p:column>
+			<p:column headerText="COMPUTADOR">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.computador.numero}" />
+			</p:column>
+			<p:column headerText="TIPO DA SOLICITAÇÃO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.tipoSolicitacao.nome}" />
+			</p:column>
+			<p:column headerText="DESCRIÇÃO">
+				<h:outputText value="#{retornoSolicitacao.solicitacao.descricao}" />
+			</p:column>
+			<p:column headerText="Retorno">
+				<h:outputText value="#{retornoSolicitacao.statusRetorno.descricao}" />
+			</p:column>
+			<p:column headerText="DATA DO RETORNO">
+				<h:outputText value="#{retornoSolicitacao.dataRetorno}">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"></f:convertDateTime>
+				</h:outputText>
+			</p:column>
+			<p:column headerText="FUNCIONÁRIO">
+				<h:outputText value="#{retornoSolicitacao.funcionario.nome}" />
+			</p:column>
+			<p:column headerText="Ação">
+				<p:commandButton title="Editar" icon="fa fa-fw fa-edit" ajax="false"
+					action="#{retornoSolicitacaoControllerWalterPaulo.editar}">
+					<f:setPropertyActionListener 
+						value="#{retornoSolicitacao}" 
+						target="#{retornoSolicitacaoControllerWalterPaulo.statusRetono}" />
+				</p:commandButton>
+				<p:commandButton title="Excluir" icon="fa fa-fw fa-remove" ajax="false"
+					action="#{retornoSolicitacaoControllerWalterPaulo.excluir}"
+					onclick="return confirm('Confirma a exclusão do computador #{retornoSolicitacao.id} ?');">
+					<f:setPropertyActionListener 
+						value="#{retornoSolicitacao}" 
+						target="#{retornoSolicitacaoControllerWalterPaulo.statusRetono}"/>	
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+		<p:commandButton value="Voltar" action="layout"/>
+	</h:form>
+</h:body>
+
+</html>

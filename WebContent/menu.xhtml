@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:menubar style="margin-top: -20px; margin-bottom: 20px">
+			<p:submenu label="Solicitação" icon="fa fa-fw fa-plus">
+			<p:menuitem label="Adicionar" icon="fa fa-fw fa-plus" value="Adicionar" actionListener="#{solicitacaoViewWalterPaulo.viewAdicionar}"></p:menuitem>
+			</p:submenu>
+			<p:submenu label="Consultas" icon="fa fa-fw fa-search">
+				<p:menuitem value="Solicitação" action="listaSolicitacao">
+				</p:menuitem>
+				<p:menuitem value="Funcionário" actionListener="#{funcionarioViewWalterPaulo.viewFuncionario}">
+				</p:menuitem>
+				<p:menuitem value="Aluno" actionListener="#{alunoViewWalterPaulo.viewAluno}">
+				</p:menuitem>
+				<p:menuitem value="Laboratório" actionListener="#{laboratorioViewWalterPaulo.viewLaboratorio}">
+				</p:menuitem>
+				<p:menuitem value="Computador" actionListener="#{computadorViewWalterPaulo.viewComputador}">
+				</p:menuitem>
+				<p:menuitem value="Tipo de Serviço" actionListener="#{tipoSolicitacaoViewWalterPaulo.viewTipoSolicitacao}">
+				</p:menuitem>
+			</p:submenu>
+			<p:submenu label="Adicionar" icon="fa fa-fw fa-plus">
+				<p:menuitem value="Funcionário" actionListener="#{funcionarioViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+				<p:menuitem value="Aluno" actionListener="#{alunoViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+				<p:menuitem value="Laboratório" actionListener="#{laboratorioViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+				<p:menuitem value="Computador" actionListener="#{computadorViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+				<p:menuitem value="Tipo de Serviço" actionListener="#{tipoSolicitacaoViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+				<p:menuitem value="Mensagem de Status" actionListener="#{statusRetornoViewWalterPaulo.viewAdicionar}">
+				</p:menuitem>
+			</p:submenu>
+			<p:submenu label="Atendimento">
+				<p:menuitem value="Silicitação" action="listaRetorno"></p:menuitem>
+			
+			</p:submenu>
+		</p:menubar>
+		
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastro de Status Retorno</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:growl />
+		<p:panelGrid columns="2">
+			
+			<h:outputText value="Descrição: *" />
+			<p:inputText
+				value="#{statusRetornoControllerWalterPaulo.statusRetorno.descricao}"
+				required="true" 
+				requiredMessage="O campo descrição é obrigatório!">
+			</p:inputText>
+			<p:commandButton value="Salvar"
+			ajax="false"
+			icon="ui-icon-disk"
+			action="#{statusRetornoControllerWalterPaulo.salvar}"/>
+			<p:commandButton value="Limpar"
+			ajax="false"
+			icon="ui-icon-refresh"
+			action="cadastroStatusRetorno.xhtml"
+			actionListener="#{statusRetornoControllerWalterPaulo.limparCampos}"
+			immediate="true" />
+		</p:panelGrid>
+		<p:dataTable value="#{statusRetornoControllerWalterPaulo.lista}" 
+			var="statusSolicitacao"
+                paginator="true" rows="5"
+                paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                rowsPerPageTemplate="5,10,15" id="labTable"
+			emptyMessage="Nenhum Serviço cadastrado!">
+		
+			<p:column headerText="Id">
+				<h:outputText value="#{statusSolicitacao.id}" />
+			</p:column>
+			<p:column headerText="Descrição">
+				<h:outputText value="#{statusSolicitacao.descricao}" />
+			</p:column>
+			<p:column headerText="Ação">
+				<p:commandButton title="Editar" icon="fa fa-fw fa-edit" ajax="false"
+					action="#{statusRetornoControllerWalterPaulo.editar}" 
+					immediate="true">
+					<f:setPropertyActionListener 
+						value="#{statusSolicitacao}" 
+						target="#{statusRetornoControllerWalterPaulo.statusRetorno}" />
+				</p:commandButton>
+				<p:commandButton title="Excluir" icon="fa fa-fw fa-remove" ajax="false"
+					action="#{statusRetornoControllerWalterPaulo.excluir}"
+					onclick="return confirm('Confirma a exclusão do computador #{statusSolicitacao} ?');"
+					immediate="true">
+					<f:setPropertyActionListener 
+						value="#{statusSolicitacao}" 
+						target="#{statusRetornoControllerWalterPaulo.statusRetorno}" />	
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>

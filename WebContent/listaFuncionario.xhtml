@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Lista de Funcionáiro</title>
+</h:head>	
+
+<h:body>
+	<h:form>
+		<p:growl />
+		<p:dataTable value="#{funcionarioControllerWalterPaulo.lista}" 
+			var="funcionario"
+                paginator="true" rows="5"
+                paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                rowsPerPageTemplate="5,10,15" id="labTable"
+			emptyMessage="Nenhum laboratório cadastrado!">
+		
+			<p:column headerText="Id" >
+				<h:outputText value="#{funcionario.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{funcionario.nome}" />
+			</p:column>
+			<p:column headerText="CPF">
+				<h:outputText value="#{funcionario.cpf}" />
+			</p:column>
+			<p:column headerText="Data de Nascimento">
+				<h:outputText value="#{funcionario.dataNascimento}" />
+			</p:column>
+			<p:column headerText="Email">
+				<h:outputText value="#{funcionario.email}" />
+			</p:column>
+			<p:column headerText="Ação">
+				<p:commandButton title="Editar" icon="fa fa-fw fa-edit" ajax="false"
+					action="#{funcionarioControllerWalterPaulo.editar}">
+					<f:setPropertyActionListener 
+						value="#{funcionario}" 
+						target="#{funcionarioControllerWalterPaulo.funcionario}" />
+				</p:commandButton>
+				<p:commandButton title="Excluir" icon="fa fa-fw fa-remove" ajax="false"
+					action="#{funcionarioControllerWalterPaulo.excluir}"
+					onclick="return confirm('Confirma a exclusão do funcionario #{funcionario.nome} ?');">
+					<f:setPropertyActionListener 
+						value="#{funcionario}" 
+						target="#{funcionarioControllerWalterPaulo.funcionario}"/>	
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>
