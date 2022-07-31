@@ -1,6 +1,6 @@
 CREATE TABLE alunos
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   nome character(20),
   matricula character(30),
   cpf character(20),
@@ -20,7 +20,7 @@ ALTER TABLE alunos
 
 CREATE TABLE computadores
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   numero integer,
   descricao character(60),
   CONSTRAINT pk_computador PRIMARY KEY (id)
@@ -37,7 +37,7 @@ ALTER TABLE computadores
 
 CREATE TABLE funcionarios
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   nome character(20),
   cpf character(20),
   datanascimento date,
@@ -56,7 +56,7 @@ ALTER TABLE funcionarios
 
 CREATE TABLE laboratorios
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   numero integer,
   descricao character(60),
   CONSTRAINT pk_laboratorio PRIMARY KEY (id)
@@ -73,7 +73,7 @@ ALTER TABLE laboratorios
 
 CREATE TABLE retorno_solicitacao
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   descricao character(60),
   data_solicitacao date,
   id_funcionario integer,
@@ -102,7 +102,7 @@ ALTER TABLE retorno_solicitacao
 
 CREATE TABLE solicitacoes
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   descricao character(400),
   data_solicitacao date,
   id_laboratorio integer,
@@ -136,7 +136,7 @@ ALTER TABLE solicitacoes
 
 CREATE TABLE status_retorno
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   descricao character(60),
   CONSTRAINT pk_statusretorno PRIMARY KEY (id)
 )
@@ -152,7 +152,7 @@ ALTER TABLE status_retorno
 
 CREATE TABLE tipo_solicitacao
 (
-  id integer NOT NULL,
+  id serial NOT NULL,
   nome character(20),
   descricao character(60),
   CONSTRAINT pk_tipo_solicitacao PRIMARY KEY (id)

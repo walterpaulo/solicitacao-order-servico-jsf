@@ -5,7 +5,6 @@ services:
     container_name: postgresql
     image: postgres:9.3
     environment:
-      POSTGRES_USER: dev
       POSTGRES_PASSWORD: d9bc25472e2c909e0f
       POSTGRES_DB: web2n2
     ports:
